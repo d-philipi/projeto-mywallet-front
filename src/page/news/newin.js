@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import MyContext from "../../context/MyContext.ts";
+import { ContainerNewIn, FormNewIn } from "../../styled";
 
 export default function NewIn({valorIn, setValorIn, descricaoIn, setDescricaoIn}){
 
@@ -39,59 +39,4 @@ export default function NewIn({valorIn, setValorIn, descricaoIn, setDescricaoIn}
             </FormNewIn>
         </ContainerNewIn>
     )
-};
-
-const ContainerNewIn = styled.div`
-  width: 100%;
-  height: 667px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  p{
-    font-family: 'Raleway', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 26px;
-    color: #FFFFFF;
-    margin: 35px;
-  }
-`
-
-const FormNewIn = styled.form`
-  width: 100%;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  input{
-    width: 326px;
-    height: 50px;
-    background: #FFFFFF;
-    border-radius: 5px;
-    margin: 5px;
-    padding: 5px;
-
-    font-family: 'Raleway', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    color: #000000;
-    border: 1px solid #FFFFFF;
-  }
-  button{
-    width: 326px;
-    height: 46px;
-    background: #A328D6;
-    border-radius: 5px;
-    margin: 5px;
-    cursor:pointer;
-
-    font-family: 'Raleway', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    color: #FFFFFF;
-    border: 1px solid #A328D6;
-  }
-`
+}

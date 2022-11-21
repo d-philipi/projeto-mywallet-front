@@ -1,7 +1,7 @@
 import axios from "axios";
 import React,{ useContext, useEffect, useState } from "react";
-import styled from "styled-components";
 import MyContext from "../../context/MyContext.ts";
+import { ContainerCarregamento, ContainerList, Li, Saldo } from "../../styled";
 
 export default function ListTransitions(){
 
@@ -69,75 +69,3 @@ export default function ListTransitions(){
         </ContainerList>
     )
 }
-
-const ContainerCarregamento = styled.div`
-    width: 100%;
-    height: 667px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img{
-        width: 200px;
-    }
-`
-
-const ContainerList = styled.ul`
-width: 326px;
-height: 446px;
-background: #FFFFFF;
-border-radius: 5px;
-padding: 10px;
-position: relative;
-`
-
-const Li = styled.li`
-width: 100%;
-display: flex;
-justify-content: space-between;
-align-items: center;
-h1{
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    color: #C6C6C6;
-}
-h2{
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    color: #000000;
-}
-h3{
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    color: ${props => props.positive ? '#03AC00' : '#C70000'};
-}
-`
-
-const Saldo = styled.li`
-width: 90%;
-position: absolute;
-bottom: 0;
-left: 10;
-display: flex;
-justify-content: space-between;
-align-items: center;
-p{
-    font-family: 'Raleway', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 17px;
-    color: #000000;
-}
-h1{
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
-    color: ${props => props.negative ? '#03AC00' : '#C70000'}
-}
-`
