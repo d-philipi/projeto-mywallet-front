@@ -22,25 +22,31 @@ export default function ListTransitions(){
         }
     
         function listErr(err){
-            console.log("Deu ruim!", err.response);
+            console.log("Deu ruim!", err);
         }
+        
     },[]);
 
     function saldoAtual (list){
 
+        let novoSaldo = 0;
+
         for(let i = 0; i < list.length; i++){
             if (list[i].direction){
-                setSaldo(saldo + list[i].value)
+                novoSaldo = novoSaldo + parseInt(list[i].value);
             }else{
-                setSaldo(saldo - list[i].value)
+                novoSaldo = novoSaldo - parseInt(list[i].value);
             }
         }
-        if(saldo < 0){
+
+        if(novoSaldo < 0){
             setNegative(true);
         }else{
             setNegative(false);
         }
-        console.log(saldo);
+
+        console.log(novoSaldo);
+        setSaldo(novoSaldo);
     }
 
     if(transitions === undefined){
@@ -56,9 +62,9 @@ export default function ListTransitions(){
                     <h3>R${t.value}</h3>
                 </Li>
             )}
-            <Saldo>
+            <Saldo negative={!negative}>
                 <p>Saldo</p>
-                <h1 negative={!negative}>{saldo}</h1>
+                <h1>R${saldo}</h1>
             </Saldo>
         </ContainerList>
     )
