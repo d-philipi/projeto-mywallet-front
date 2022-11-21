@@ -7,7 +7,8 @@ export default function ListTransitions(){
 
     const { config } = useContext(MyContext);
     const [transitions, setTransitions] = useState();
-    const [saldo, setSaldo] = useState();
+    const [saldo, setSaldo] = useState(0);
+    const [negative, setNegative] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost:5000/transitions',config)
@@ -26,13 +27,24 @@ export default function ListTransitions(){
     },[]);
 
     function saldoAtual (list){
+
         for(let i = 0; i < list.length; i++){
             if (list[i].direction){
-                setSaldo(saldo + Number(list[i]))
+                setSaldo(saldo + list[i].value)
             }else{
-                setSaldo(saldo - Number(list[i]))
+                setSaldo(saldo - list[i].value)
             }
         }
+        if(saldo < 0){
+            setNegative(true);
+        }else{
+            setNegative(false);
+        }
+        console.log(saldo);
+    }
+
+    if(transitions === undefined){
+        return(<ContainerCarregamento><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif"/></ContainerCarregamento>)
     }
 
     return (
@@ -41,16 +53,27 @@ export default function ListTransitions(){
                 <Li positive={t.direction} key={index}>
                     <h1>{t.date}</h1>
                     <h2>{t.description}</h2>
-                    <h3>{t.value}</h3>
+                    <h3>R${t.value}</h3>
                 </Li>
             )}
             <Saldo>
                 <p>Saldo</p>
-                {saldo}
+                <h1 negative={!negative}>{saldo}</h1>
             </Saldo>
         </ContainerList>
     )
 }
+
+const ContainerCarregamento = styled.div`
+    width: 100%;
+    height: 667px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 200px;
+    }
+`
 
 const ContainerList = styled.ul`
 width: 326px;
@@ -90,8 +113,25 @@ h3{
 `
 
 const Saldo = styled.li`
-width: 100%;
+width: 90%;
 position: absolute;
 bottom: 0;
 left: 10;
+display: flex;
+justify-content: space-between;
+align-items: center;
+p{
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    color: #000000;
+}
+h1{
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    color: ${props => props.negative ? '#03AC00' : '#C70000'}
+}
 `

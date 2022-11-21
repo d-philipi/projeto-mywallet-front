@@ -19,7 +19,7 @@ export default function App() {
 	const [token, setToken] = useState("");
 	const config = {
 		headers: {
-			Authorization: `Bearer ${token}`
+			authorization: `Bearer ${token}`
 		}
 	}
 	const [valorIn, setValorIn] = useState("");

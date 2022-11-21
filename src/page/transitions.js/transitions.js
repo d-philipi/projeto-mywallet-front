@@ -1,15 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import ListTransitions from "./listTransitions";
+import { useNavigate } from 'react-router-dom';
 
 export default function Transitions(){
 
-    function entrada(){
+    const navigate = useNavigate();
 
+    function entrada(){
+        navigate("/new-in");
     }
 
     function saida(){
-
+        navigate("/new-out");
     }
 
     return (

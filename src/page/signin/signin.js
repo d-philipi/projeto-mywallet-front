@@ -32,7 +32,7 @@ export default function SignIn({email, setEmail, senha, setSenha}) {
   }
 
   function loginFalha(erro){
-      alert(erro.response.data.message);
+      alert(erro.response);
   }
 
     return (
