@@ -26,12 +26,13 @@ export default function App() {
 	const [descricaoIn, setDescricaoIn] = useState("");
 	const [valorOut, setValorOut] = useState("");
 	const [descricaoOut, setDescricaoOut] = useState("");
+	const [usuario, setUsuario] = useState("");
 
 
   return (
     <BrowserRouter>
     	<GlobalStyle/>
-		<MyContext.Provider value={{token, setToken, config}}>
+		<MyContext.Provider value={{token, setToken, config, usuario, setUsuario}}>
 		<Routes>
 			<Route path="/" 
 			element={<SignIn

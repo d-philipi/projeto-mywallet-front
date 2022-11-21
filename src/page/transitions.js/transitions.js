@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import ListTransitions from "./listTransitions";
 import { useNavigate } from 'react-router-dom';
+import MyContext from '../../context/MyContext.ts';
 
 export default function Transitions(){
 
     const navigate = useNavigate();
+    const { usuario } = useContext(MyContext);
 
     function entrada(){
         navigate("/new-in");
@@ -15,11 +17,15 @@ export default function Transitions(){
         navigate("/new-out");
     }
 
+    function logOut(){
+        navigate("/");
+    }
+
     return (
         <ContainerTransitions>
             <Titulo>
-               <h1>Olá</h1>
-               <ion-icon name="exit-outline"></ion-icon>
+               <h1>Olá {usuario.name}</h1>
+               <ion-icon onClick={logOut} name="exit-outline"></ion-icon>
             </Titulo>
             <ListTransitions/>
             <SideBar>

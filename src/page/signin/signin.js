@@ -8,7 +8,7 @@ import axios from 'axios';
 export default function SignIn({email, setEmail, senha, setSenha}) {
 
   const navigate = useNavigate();
-  const {token, setToken} = useContext(MyContext);
+  const {token, setToken, setUsuario} = useContext(MyContext);
 
 /*  useEffect(()=>{
     if (token != undefined){
@@ -28,6 +28,12 @@ export default function SignIn({email, setEmail, senha, setSenha}) {
 
   function LoginSucesso(resposta){
     setToken(resposta.data.token);
+    setUsuario({
+      token: resposta.data.token,
+      name: resposta.data.name
+    })
+    setEmail("");
+    setSenha("");
     navigate('/transitions');
   }
 

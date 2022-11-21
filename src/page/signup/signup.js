@@ -20,6 +20,10 @@ export default function SignUp({email, setEmail, senha, setSenha, nome, setNome,
   }
 
   function CadastroSucesso(resposta){
+    setEmail("");
+    setSenha("");
+    setNome("");
+    setCheckSenha("");
     navigate('/');
   }
 
