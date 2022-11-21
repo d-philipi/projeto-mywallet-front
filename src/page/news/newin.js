@@ -11,12 +11,14 @@ export default function NewIn({valorIn, setValorIn, descricaoIn, setDescricaoIn}
 
     function registrar (e){
         e.preventDefault();
-
-        axios.post('http://localhost:5000/transitions', config,{
-        value: valorIn,
-        description: descricaoIn,
-        direction: true
-    }).then(registroSucesso).catch(registroFalha);
+        const novaTransicao = {
+          value: valorIn,
+          description: descricaoIn,
+          direction: true
+        }
+        axios.post('http://localhost:5000/transitions',novaTransicao, config)
+        .then(registroSucesso)
+        .catch(registroFalha);
     }
 
     function registroSucesso(resposta){

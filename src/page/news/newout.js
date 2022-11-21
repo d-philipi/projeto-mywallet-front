@@ -12,11 +12,13 @@ export default function NewOut({valorOut, setValorOut, descricaoOut, setDescrica
     function registrar (e){
         e.preventDefault();
 
-        axios.post('http://localhost:5000/transitions',config,{
+        axios.post('http://localhost:5000/transitions',{
         value: valorOut,
         description: descricaoOut,
         direction: false
-    }).then(registroSucesso).catch(registroFalha);
+    }, config)
+    .then(registroSucesso)
+    .catch(registroFalha);
     }
 
     function registroSucesso(resposta){
